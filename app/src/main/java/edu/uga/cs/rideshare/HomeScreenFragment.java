@@ -243,7 +243,7 @@ public class HomeScreenFragment extends Fragment {
                             // Replace the current fragment with the RiderFragment
                             Fragment riderFragment = new RiderFragment(currentUser, userList, rideList); // Create a new instance of RiderFragment
                             Bundle args = new Bundle();
-                            //  args.putString("rideId", ride.key);
+                            args.putString("rideId", ride.key);
                             riderFragment.setArguments(args);
 
                             // Replace the current fragment with the RiderFragment

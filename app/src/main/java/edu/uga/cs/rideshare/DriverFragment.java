@@ -143,13 +143,13 @@ public class DriverFragment extends Fragment {
         postRequestButton.setOnClickListener((View.OnClickListener) v -> {
             String startLocation = startLocationInput.getText().toString();
             String destination = destinationInput.getText().toString(); // Set start location
-            postRideRequest(dateTimeString, startLocation, destination);
+            postRideOffer(dateTimeString, startLocation, destination);
         });
 
         return view;
     }
 
-    private void postRideRequest(String date, String startLocation, String destination) {
+    private void postRideOffer(String date, String startLocation, String destination) {
         String key = mDatabase.child("rides").push().getKey();
         Log.d("key:", key);
         Ride ride = new Ride(key, date, destination, startLocation, currentUser, null);
@@ -166,7 +166,7 @@ public class DriverFragment extends Fragment {
         rideRef.child("riderAccepted").setValue(true);
         mDatabase.child("rides").child(key).setValue(ride)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(getContext(), "Ride Requested", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Ride Offered", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Failed to accept ride: " + e.getMessage(), Toast.LENGTH_SHORT).show();
